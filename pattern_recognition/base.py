@@ -23,7 +23,7 @@ class Petal(SimpleNamespace):
     ACUTE_ANGLE: Final[int] = (TOTAL_ANGLE // 2) - OBTUSE_ANGLE
     SIDE_LENGTH: Final[int] = 50
 
-    def _draw(self) -> None:
+    def _draw(self, /) -> None:
         """Draws the petal."""
         TURTLE_INSTANCE.bk(self.SIDE_LENGTH)
         TURTLE_INSTANCE.left(self.OBTUSE_ANGLE)
@@ -34,7 +34,7 @@ class Petal(SimpleNamespace):
         TURTLE_INSTANCE.fd(self.SIDE_LENGTH)
 
     @staticmethod
-    def calculate_angle(petal_count: int) -> int:
+    def calculate_angle(petal_count: int, /) -> int:
         """Calculates the angle of each petal.
 
         Parameters
@@ -50,7 +50,7 @@ class Petal(SimpleNamespace):
         return Petal.ACUTE_ANGLE - (TOTAL_ANGLE // petal_count)
 
     @classmethod
-    def draw(cls, /, *, petal_count: int) -> None:
+    def draw(cls, /) -> None:
         """Draws a flower with the given number of petals.
 
         Parameters
@@ -74,11 +74,11 @@ class Flower:
     def __init__(self, /, *, petal_count: int) -> None:
         self.petal_count: int = petal_count
 
-    def draw(self) -> None:
+    def draw(self, /) -> None:
         """Draws the flower."""
         TURTLE_INSTANCE.pd()
         for _ in range(self.petal_count):
-            Petal.draw(petal_count=self.petal_count)
+            Petal.draw()
             TURTLE_INSTANCE.left(Petal.calculate_angle(self.petal_count))
         TURTLE_INSTANCE.pu()
 
@@ -89,5 +89,5 @@ while True:
     try:
         flower.draw()
     except KeyboardInterrupt:
-        print('Exiting!')
+        print("Exiting!")
         break
