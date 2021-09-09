@@ -44,9 +44,7 @@ map: Dict[str, str] = {item: to[index] for index, item in enumerate(first)}
 
 
 def random_word(*, pop: bool = True) -> Tuple[str, str]:
-    print(first)
-    word = random.choice(first)
-    print(word)
+    word: str = random.choice(first)
     if pop:
         # since this program will be run once, we can pop the item at runtime.
         first.pop(first.index(word))
