@@ -202,7 +202,8 @@ void draw() {
 color bgColor = color(131, 15, 157);
 color textColor = color(0, 255, 0);
 int textSize = 30;
-double calculation = (78 / (89 * 4) / (57 / 12)) + 1003;
+int initialValue = 78, initialDenominator = 89 * 4, finalDenominator = 57 / 12, secondValue = 1003;
+double calculation = (initialValue / (initialDenominator) / (finalDenominator)) + secondValue;
 int textX = 0, textY = 100;
 
 void setup() {
@@ -215,6 +216,7 @@ void setup() {
 void draw() {
   text(Double.toString(calculation), textX, textY);
 }
+
 ```
 
 ![1003 in green on a purple background](./Assets/Task-6.png)
