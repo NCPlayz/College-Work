@@ -20,7 +20,7 @@ void draw() {
 }
 ```
 
-![Product of the code](./Assets/Fill-Part-1.png)
+![two ellipses, one green and one blue, on a navy blue background](./Assets/Fill-Part-1.png)
 
 ## Part 2
 
@@ -39,7 +39,7 @@ void draw() {
 }
 ```
 
-![Product of the code](./Assets/Fill-Part-2.png)
+![two red ellipses on a navy blue background](./Assets/Fill-Part-2.png)
 
 # Task 1
 
@@ -72,7 +72,7 @@ void drawStraightLine(float x, float y) {
 }
 ```
 
-![Product of the code](./Assets/Task-1.png)
+![stripes of gray on a black background](./Assets/Task-1.png)
 
 # Task 2
 
@@ -118,3 +118,103 @@ void drawRing(float x, float y, int radius, int width) {
 ```
 
 ![underground sign](./Assets/Task-2.png)
+
+# Task 3
+
+```processing
+int radius = 100;
+color bgColor = color(0, 0, 255);
+color fgColor = color(255, 0, 0);
+int circlesY = 200;
+int leftCircleX = 100;
+int rightCircleX = 250;
+
+void setup() {
+ size(400, 400);
+ background(bgColor);
+}
+
+void draw() {
+ fill(fgColor);
+ ellipse(leftCircleX, circlesY, radius, radius);
+ ellipse(rightCircleX, circlesY, radius, radius);
+}
+```
+
+![two red circles on a blue background](./Assets/Task-3.png)
+
+# Task 4
+
+```processing
+int radius = 100;
+color bgColor = color(0, 0, 255);
+color fgColor = color(255, 0, 0);
+int circlesY = 200;
+int leftCircleX = 100;
+int rightCircleX = 250;
+int frame = 0;
+
+void setup() {
+ size(400, 400);
+}
+
+void draw() {
+ background(bgColor);
+ fill(fgColor);
+ ellipse(leftCircleX - frame * 2, circlesY + frame, radius, radius);
+ ellipse(rightCircleX + frame * 5, circlesY - frame, radius, radius);
+ frame++;
+}
+```
+
+# Task 5
+
+```processing
+String firstName = "David", middleName = "Edward", surname = "Walliams";
+int age = 50;
+int textX = 10;
+int textY = 20;
+int textInterval = 20;
+int textSize = 25;
+color bgColor = color(0, 255, 0);
+color textColor = color(0, 0, 0);
+
+void setup () {
+ size(200, 200);
+ background(bgColor);
+ fill(textColor);
+ textSize(textSize);
+}
+
+void draw() {
+ text(firstName, textX, textY);
+ text(middleName, textX, textY + textInterval);
+ text(surname, textX, textY + textInterval * 2);
+ text(age, textX, textY + textInterval * 3);
+}
+```
+
+![text about David Walliams](./Assets/Task-5.png)
+
+# Task 6
+
+```processing
+color bgColor = color(131, 15, 157);
+color textColor = color(0, 255, 0);
+int textSize = 30;
+double calculation = (78 / (89 * 4) / (57 / 12)) + 1003;
+int textX = 0, textY = 100;
+
+void setup() {
+  size(200, 200);
+  background(bgColor);
+  fill(textColor);
+  textSize(textSize);
+}
+
+void draw() {
+  text(Double.toString(calculation), textX, textY);
+}
+```
+
+![1003 in green on a purple background](./Assets/Task-6.png)
