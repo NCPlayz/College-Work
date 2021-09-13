@@ -159,10 +159,16 @@ void setup() {
 }
 
 void draw() {
+ // essentially clears canvas every frame, otherwise there would be residual ellipses from previous draw calls.
  background(bgColor);
  fill(fgColor);
+
+ // draws two ellipses, one that drifts towards the bottom-left corner,
+ // and another that drifts towards the top-right corner.
  ellipse(leftCircleX - frame * 2, circlesY + frame, radius, radius);
  ellipse(rightCircleX + frame * 5, circlesY - frame, radius, radius);
+
+ // increments the value used for setting the X and Y values of the ellipses for the animations.
  frame++;
 }
 ```
