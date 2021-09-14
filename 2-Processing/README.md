@@ -226,3 +226,37 @@ void draw() {
 ```
 
 ![1003 in green on a purple background](./Assets/Task-6.png)
+
+# Task 7
+
+```processing
+int leftEarX = 100;
+int rightEarX = 250;
+int earY = 75;
+int earRadius = 100;
+int faceX = 175;
+int faceY = 150;
+int faceRadius = 150;
+int leftEyeX = 150;
+int rightEyeX = 200;
+int eyeY = 125;
+int eyeRadius = 25;
+color eyeColor = color(255, 0, 0);
+color skinColor = color(0);
+
+void setup() {
+  size(350, 250);
+}
+
+void draw() {
+  fill(skinColor);
+  ellipse(leftEarX, earY, earRadius, earRadius);
+  ellipse(rightEarX, earY, earRadius, earRadius);
+  ellipse(faceX, faceY, faceRadius, faceRadius);
+  fill(eyeColor);
+  ellipse(leftEyeX, eyeY, eyeRadius, eyeRadius);
+  ellipse(rightEyeX, eyeY, eyeRadius, eyeRadius);
+}
+```
+
+![a Mickey mouse-like drawing with red eyes](./Assets/Task-7.png)
