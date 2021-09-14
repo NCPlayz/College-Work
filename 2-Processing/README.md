@@ -260,3 +260,68 @@ void draw() {
 ```
 
 ![a Mickey mouse-like drawing with red eyes](./Assets/Task-7.png)
+
+# Task 8
+
+```processing
+int squareLength = 10;
+int squareX = 0;
+int squareY = 100;
+int phase = 0;
+int frame = 0;
+color bgColor = color(0, 0, 255);
+
+void setup() {
+  size(200, 200);
+  background(bgColor);
+}
+
+void draw() {
+  background(bgColor);
+
+  if (frame <= 200) {
+    switch (phase) {
+      case 0:
+        first_challenge();
+        break;
+      case 1:
+        second_challenge();
+        break;
+      case 2:
+        third_challenge();
+        break;
+      case 4:
+        fourth_challenge();
+        break;
+    }
+    frame++;
+  } else {
+    increment_phase();
+    frame = 0;
+  }
+}
+
+void increment_phase() {
+ phase++;
+}
+
+void first_challenge() {
+    rect(squareX + frame, squareY, squareLength, squareLength);
+    frame++;
+}
+
+void second_challenge() {
+  rect(squareX + frame, squareY, squareLength, squareLength);
+  frame += 5;
+}
+
+void third_challenge() {
+  rect(squareX + frame, squareY, squareLength, squareLength);
+  frame *= 2;
+}
+
+void fourth_challenge() {
+  rect(squareX + frame, squareY - frame, squareLength, squareLength);
+  frame *= 2;
+}
+```
