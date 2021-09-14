@@ -325,3 +325,38 @@ void fourth_challenge() {
   frame *= 2;
 }
 ```
+
+# Task 9
+
+```processing
+color bgColor = color(255, 0, 0);
+int circleRed = 255;
+int circleBlue = 255;
+int circleGreen = 255;
+int circleRadius = 25;
+int initialX = 289;
+int initialY = 289;
+int frame = 0;
+
+void setup() {
+  size(578, 578);
+  background(bgColor);
+}
+
+void draw() {
+  background(bgColor);
+  fill(circleRed, circleGreen, circleBlue);
+  ellipse(initialX - frame, initialY - frame, circleRadius, circleRadius);
+  ellipse(initialX + frame, initialY + frame, circleRadius, circleRadius);
+  ellipse(initialX - frame, initialY + frame, circleRadius, circleRadius);
+  ellipse(initialX + frame, initialY - frame, circleRadius, circleRadius);
+
+  if (circleRed > 0) {
+    circleRed--;
+  }
+  if (circleGreen > 0) {
+    circleGreen--;
+    frame++;
+  }
+}
+```
