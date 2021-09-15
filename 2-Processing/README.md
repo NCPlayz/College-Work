@@ -360,3 +360,127 @@ void draw() {
   }
 }
 ```
+
+# Task 10
+
+```processing
+int circleX = 1;
+int circleY = 1;
+int circleSize = 1;
+int frame = 0;
+boolean changeCourse = false;
+
+void setup() {
+ size(200, 200);
+}
+
+void draw() {
+  background(255, 255, 255);
+  fill(0, 0, 0);
+  ellipse(circleX, circleY, circleSize, circleSize);
+  bounce();
+}
+
+void bounce() {
+  float radius = circleSize / 2;
+  if (circleX + radius <= 200 & circleY + radius <= 200 && !changeCourse) {
+    circleX++;
+    circleY++;
+    if (circleX + radius == 200 && circleX + radius == 200) {
+      changeCourse = true;
+    }
+  } else if (circleX - radius >= 0 && circleY - radius >= 0 && changeCourse) {
+    circleX--;
+    circleY--;
+    if (circleX - radius == 0 && circleY - radius == 0) {
+      changeCourse = false;
+    }
+  }
+}
+
+void keyPressed() {
+  if (key == 'q' && circleSize < 50) {
+    circleSize += 5;
+  }
+
+  if (key == 'p' && circleSize > 1) {
+    circleSize -= 5;
+  }
+}
+```
+
+# Task 11
+
+```processing
+import static javax.swing.JOptionPane.*;
+
+int input(String prompt) {
+  String input = showInputDialog(prompt);
+  return parseInt(input == null ? "" : input, MIN_INT);
+}
+
+int num1 = input("Please enter an integer:");
+int num2 = input("Please enter an integer:");
+
+void setup() {
+ if (num1 == MIN_INT || num2 == MIN_INT) {
+   print("You may have given invalid numbers.");
+ } else if (num1 > num2) {
+   print(num1, "is greater than", num2);
+ } else if (num1 < num2) {
+   print(num2, "is smaller than", num1);
+ } else {
+   print(num1, "is equal to", num2);
+ }
+}
+```
+
+# Task 12
+
+```processing
+import static javax.swing.JOptionPane.*;
+
+int input(String prompt) {
+  String input = showInputDialog(prompt);
+  return parseInt(input == null ? "" : input, MIN_INT);
+}
+
+int num1 = input("Please enter an integer:");
+int num2 = input("Please enter an integer:");
+int num3 = input("Please enter an integer:");
+
+void setup() {
+ if (num1 == MIN_INT || num2 == MIN_INT || num3 == MIN_INT) {
+   print("You may have given invalid numbers.");
+ }
+
+ int biggestNum = max(num1, num2, num3);
+
+ print("The biggest number is", biggestNum);
+}
+```
+
+# Task 13
+
+```processing
+import static javax.swing.JOptionPane.*;
+
+int input(String prompt) {
+  String input = showInputDialog(prompt);
+  return parseInt(input == null ? "" : input, MIN_INT);
+}
+
+int num1 = input("Please enter an integer:");
+
+void setup() {
+ if (num1 == MIN_INT) {
+   print("You may have given an invalid number.");
+ } else if (num1 > 0) {
+   print(num1, "is positive");
+ } else if (num1 < 0) {
+   print(num1, "is negative");
+ } else {
+   print(num1, "is zero");
+ }
+}
+```
