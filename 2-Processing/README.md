@@ -484,3 +484,30 @@ void setup() {
  }
 }
 ```
+
+# Task 14
+
+```processing
+import static javax.swing.JOptionPane.*;
+
+float input(String prompt) {
+  String input = showInputDialog(prompt);
+  return parseFloat(input == null ? "" : input, MIN_FLOAT);
+}
+
+float num1 = input("Please enter an integer:");
+float num2 = input("Please enter another integer:");
+float num3 = input("Please enter another integer:");
+float num4 = input("Please enter another integer:");
+float num5 = input("Please enter another integer:");
+
+void setup() {
+  if (num2 + num4 > num5 && num3 - num1 < num4) {
+    print("Hello!");
+  } else if (num2 + num5 != 13) {
+    print("Goodbye!");
+  } else {
+    print("Just joking!");
+  }
+}
+```
