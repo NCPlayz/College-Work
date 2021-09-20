@@ -556,3 +556,18 @@ for (int i = 1; i <= 100; i++) {
 
 print(total);
 ```
+
+# Task 17
+
+```processing
+for (int i = 0; i < 50; i++) {
+  String ret = "";
+  if (i % 3 == 0) {
+    ret += "fizz";
+  }
+  if (i % 5 == 0) {
+    ret += "buzz";
+  }
+  print(ret == "" ? str(i) : ret, "\n");
+}
+```
