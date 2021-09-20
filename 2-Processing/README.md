@@ -511,3 +511,28 @@ void setup() {
   }
 }
 ```
+
+# Task 15
+
+```processing
+import static javax.swing.JOptionPane.*;
+
+String input(String prompt) {
+  return showInputDialog(prompt);
+}
+
+String userStr = input("Enter something: ");
+int userStrLen = userStr.length();
+
+void setup() {
+  char character = 'a';
+  int occurences = 0;
+  for (int i = 0; i < userStrLen; i++) {
+    char value = userStr.charAt(i);
+    if (value == character) {
+      occurences++;
+    }
+  }
+  print("The character", character, "appeared", occurences, "times");
+}
+```
