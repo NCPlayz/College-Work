@@ -526,13 +526,33 @@ int userStrLen = userStr.length();
 
 void setup() {
   char character = 'a';
-  int occurences = 0;
+  int occurrences = 0;
   for (int i = 0; i < userStrLen; i++) {
     char value = userStr.charAt(i);
     if (value == character) {
-      occurences++;
+      occurrences++;
     }
   }
-  print("The character", character, "appeared", occurences, "times");
+  print("The character", character, "appeared", occurrences, "times");
 }
+```
+
+# Task 16
+
+```processing
+for (int i = 1; i <= 100; i++) {
+  if (i % 2 == 0) {
+    print(i, "\n");
+  }
+}
+
+int total = 0;
+
+for (int i = 1; i <= 100; i++) {
+  if (i % 7 == 0) {
+    total += i;
+  }
+}
+
+print(total);
 ```
