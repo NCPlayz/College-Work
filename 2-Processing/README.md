@@ -517,11 +517,7 @@ void setup() {
 ```processing
 import static javax.swing.JOptionPane.*;
 
-String input(String prompt) {
-  return showInputDialog(prompt);
-}
-
-String userStr = input("Enter something: ");
+String userStr = showInputDialog("Enter something: ");
 int userStrLen = userStr.length();
 
 void setup() {
@@ -569,5 +565,107 @@ for (int i = 0; i < 50; i++) {
     ret += "buzz";
   }
   print(ret == "" ? str(i) : ret, "\n");
+}
+```
+
+# Task 18
+
+```processing
+import java.time.LocalTime;
+import java.util.Locale;
+import java.time.format.DateTimeFormatter;
+import static javax.swing.JOptionPane.*;
+
+// Initiates a mapping from "AM" or "PM" to 0, 12.
+// These are used as increments internally for the
+// LocalTime object.
+IntDict amOrPmMapping = new IntDict(new Object[][] {
+  { "AM", 0 },
+  { "PM", 12},
+});
+
+// Initiates a formatter that can produce "12:25 AM"
+// For some reason, I was not able to reuse this formatter to parse the prompt,
+// which is a shame. Nonetheless, this cuts down on around 3 lines of code!
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a", Locale.UK);
+
+/// Parses an integer that can be restricted to an upper bound,
+/// with a custom error message.
+int parseInteger(String value, int upperLimit, String type) {
+  int parsedValue = parseInt(value, MIN_INT);
+
+  if (parsedValue < 0 || parsedValue > upperLimit) {
+    println("The", type, "you have provided is invalid.");
+    System.exit(-1);
+  }
+
+  return parsedValue;
+}
+
+LocalTime timePrompt() {
+  // EXAMPLE:
+  // > 12:25 AM
+  //     ^  ^
+  // Delimeters used to split into 3 segments
+  String promptValue = showInputDialog("Enter a time in the format 'HH:MM AM/PM':");
+  String[] timeSegments = splitTokens(promptValue, ": ");
+
+  // Validate length of list, with error reasons
+  if (timeSegments.length != 3) {
+    String[] errorReason = { "Provide input in 'HH:MM AM/PM' format.", "Provide minutes and AM/PM.", "Provide AM/PM." };
+    int index = timeSegments.length > 3 ? 0 : timeSegments.length;
+    println(errorReason[index]);
+    System.exit(-1);
+  }
+
+  int hours = parseInteger(timeSegments[0], 12, "hour");
+  int minutes = parseInteger(timeSegments[1], 59, "minute");
+
+  // Parse "AM" or "PM" indicator
+  String amOrPmIndicatorValue = timeSegments[2].toUpperCase();
+
+  // Validate whether it is "AM" or "PM"
+  if (!amOrPmMapping.hasKey(amOrPmIndicatorValue)) {
+    println("Expected 'AM' or 'PM', not:", amOrPmIndicatorValue);
+    System.exit(-1);
+  }
+  int amOrPmIncrement = amOrPmMapping.get(amOrPmIndicatorValue);
+
+  return LocalTime.of(hours + amOrPmIncrement, minutes);
+}
+
+LocalTime addTimePrompt(LocalTime calculatedTime) {
+  // EXAMPLE:
+  // > 12:25
+  //     ^
+  // Delimeters used to split into 2 segments
+  String promptValue = showInputDialog("Enter an time in the format 'HH:MM' you would like to increment to the time:");
+  String[] addSegments = splitTokens(promptValue, ":");
+
+  // Validate length of list, with error reasons
+  if (addSegments.length != 2) {
+    String[] errorReason = { "Provide input in 'HH:MM' format.", "Provide minutes." };
+    int index = addSegments.length > 2 ? 0 : addSegments.length;
+    println(errorReason[index]);
+    System.exit(-1);
+  }
+
+  // MAX_INT is used because it could be theoretically any number,
+  // as they are just adding an amount of hours and minutes to the
+  // original validated time provided.
+  int addHours = parseInteger(addSegments[0], MAX_INT, "hour");
+  int addMinutes = parseInteger(addSegments[1], MAX_INT, "minute");
+
+  // Increment hours and minutes to original time object
+  return calculatedTime.plusHours(addHours).plusMinutes(addMinutes);
+}
+
+void setup() {
+  LocalTime calculatedTime = timePrompt();
+  LocalTime addedTime = addTimePrompt(calculatedTime);
+
+  // Format the time as 'HH:MM AM/PM'
+  String formattedTime = formatter.format(addedTime);
+  println(formattedTime.toUpperCase());
 }
 ```
