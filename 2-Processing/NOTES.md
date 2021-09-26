@@ -1,17 +1,30 @@
 # Processing taster lessons notes
 
+## Preface
+
+Here are some small things that might be good to note as they are referenced multiple times across this page.
+
+### Container types
+
+The basic container types we've been taught are: `int`, `String`, `boolean`, `char`.
+
+| Type      | Description                                      | Example           |
+| --------- | ------------------------------------------------ | ----------------- |
+| `int`     | Represents an integer, or whole number.          | `123`             |
+| `String`  | Represents a string of characters.               | `"Hello, World!"` |
+| `boolean` | Represents a value that is either true or false. | `true`            |
+| `char`    | Represents a singular character.                 | `'H'`             |
+
 ## Functions
 
 A function is just a container of code, that can be reused across your codebase.
-
-The basic container types we've been taught are: `int`, `String`, `boolean`, `char`.
 
 > If you don't want the function to return anything, the container type should be `void`.
 
 ### Declaring functions
 
 ```processing
-// The pattern is <container type> <function name>(<parameters>) { ... }
+// The signature is <container type> <function name>(<parameters>) { ... }
 void myFunction() {
     // Do Stuff
 }
@@ -37,6 +50,51 @@ myFunction();
 // We store the returned value in a variable.
 // See Variables section for more info.
 int coolVariable = myCoolFunction();
+```
+
+### Processing built-in functions
+
+Processing comes with built-in functions that are used to perform actions on the screen, etc.
+
+One example is the [`setup()` function](https://processing.org/reference/setup_.html) that can be declared.
+The `setup()` function is called at the start of a script, and allows you to setup the environment.
+
+Another example is the [`draw()` function](https://processing.org/reference/draw_.html) that can be declared.
+This function runs 60 times per second, to emulate 60 frames, and allows you to draw whatever you want on the screen.
+
+Both of these functions do not accept any parameters, and are called automatically by Processing.
+
+In this example:
+
+- we will create a window of size 200x200, using the [`size()` built-in function](https://processing.org/reference/size_.html)
+- set the background to [alice blue](https://rgb.to/aliceblue) using the [`background()` function](https://processing.org/reference/background_.html).
+- draw a line with the [`line()` function](https://processing.org/reference/line_.html)
+
+```processing
+void setup() {
+  // In this case, size() accepts two parameters:
+  // width  - which accepts only an integer as its value.
+  // height - which also accepts only an integer as its value.
+  size(200, 200);
+
+  // background() here is being called with 3 parameters:
+  // red   - the integer value out of 255 for the red component.
+  // green - ^
+  // blue  - ^
+  background(240, 248, 255);
+}
+
+void draw() {
+  // Can be thought of as two pairs of co-ordinates:
+  // (10, 10) and (100, 50)
+  //
+  // Parameters:
+  // x1 - X value of first point.
+  // y1 - Y value of first point.
+  // x2 - X value of second point.
+  // y2 - Y value of second point.
+  line(10, 10, 100, 50);
+}
 ```
 
 ## Variables
@@ -113,7 +171,7 @@ void draw() {
 
 ```processing
 int myInt = 5;
-// Basic format:
+// Basic signature:
 // if (<condition>) { ... }
 // Must be wrapped in parentheses
 // The condition must always become a boolean, as If Statements
