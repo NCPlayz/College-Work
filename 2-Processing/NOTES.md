@@ -243,9 +243,9 @@ int inputAsInt = parseInt(input, MIN_INT);
 // or the Operating System can handle.
 ```
 
+Processing also has a special [`keyPressed()` function](https://processing.org/reference/keyPressed_.html), which detects when a key is pressed.
+
 ```processing
-// We also learnt about Processing's special "keyPressed" function,
-// which detects when a key is pressed.
 void keyPressed() {
   // "key" is a special variable that only exists within the
   // "keyPressed" function -- Processing provides it to us!
