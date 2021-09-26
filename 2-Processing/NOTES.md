@@ -219,6 +219,8 @@ else {
 
 ### Input
 
+#### Input through dialog box
+
 The way we learnt to get text input was with:
 
 ```processing
@@ -250,6 +252,8 @@ int inputAsInt = parseInt(input, MIN_INT);
 // or the Operating System can handle.
 ```
 
+#### Input on the screen
+
 Processing also has a special [`keyPressed()` function](https://processing.org/reference/keyPressed_.html), which detects when a key is pressed.
 
 ```processing
@@ -264,7 +268,10 @@ void keyPressed() {
 
 ### Output
 
-We can print to the console whatever we want, using functions such as the [`print()` function](https://processing.org/reference/print_.html), or [`println()` function](https://processing.org/reference/println_.html).
+#### Output on the terminal
+
+We can print to the console whatever we want, using functions such as the [`print()` function](https://processing.org/reference/print_.html),
+or [`println()` function](https://processing.org/reference/println_.html).
 
 ```processing
 // To print things to the console, we can use:
@@ -290,6 +297,34 @@ Output:
 Stuff!
 More Stuff!
 ```
+
+#### Output on the screen
+
+However, we can also use the [`text()` function](https://processing.org/reference/text_.html) to display text on the screen!
+
+> If you want to change the size of the text, you can use [`textSize()`](https://processing.org/reference/textSize_.html).
+
+```processing
+void setup() {
+  size(200, 200);
+  // Set the background to black.
+  background(0, 0, 0);
+  textSize(25);
+}
+
+void draw() {
+  // In this case, "text()" is provided with 3 parameters:
+  //   text - the text you would like to write.
+  //   x    - the x co-ordinate of where you would like to write the text.
+  //   y    - the y co-ordinate of where you would like to write the text.
+  text("Stuff!", 10, 20);
+  text("More Stuff!", 10, 50);
+}
+```
+
+Output:
+
+![Result of code above](./Assets/Output-Text.png)
 
 ## For loops
 
