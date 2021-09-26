@@ -327,15 +327,52 @@ In processing, they are `&&`, `||`, and `!`.
 
 ### AND
 
+![AND gate](./Assets/AND-gate.png)
+
 this logic gate requires two items, and tells us if both items are true. We can think of this as the intersection of a venn diagram.
+
+Truth table for an AND gate:
+
+| A   | B   | C   |
+| --- | --- | --- |
+| 0   | 0   | 0   |
+| 0   | 1   | 0   |
+| 1   | 0   | 0   |
+| 1   | 1   | 1   |
+
+For an AND gate, both A and B must be 1.
 
 ### OR
 
+![OR gate](./Assets/OR-gate.png)
+
 this logic gate requires two items and tells us if either one of the items are true. We can think of this as covering all of the inner bits of a venn digram.
+
+Truth table for an OR gate:
+
+| A   | B   | C   |
+| --- | --- | --- |
+| 0   | 0   | 0   |
+| 1   | 0   | 1   |
+| 0   | 1   | 1   |
+| 1   | 1   | 1   |
+
+For an OR gate, either A or B must be 1.
 
 ### NOT
 
+![NOT gate](./Assets/NOT-gate.png)
+
 this logic gate requires one item, and basically inverts the value of that item. If the item is true, the result is false. If the item is false, the result is true.
+
+Truth Table for a NOT gate:
+
+| IN  | OUT |
+| --- | --- |
+| 0   | 1   |
+| 1   | 0   |
+
+For a NOT gate, IN is inverted.
 
 ### Usage in Processing
 
