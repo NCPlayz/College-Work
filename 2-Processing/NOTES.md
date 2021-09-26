@@ -18,7 +18,7 @@ The basic container types we've been taught are: `int`, `float`, `double`, `Stri
 | `char`    | Represents a singular character.                                    | `'H'`             |
 
 > The difference between `float` and `double` is that with `float` the value is stored in memory as 32 bits,
-> whereas with `double the value is stored in memory as 64 bits. This means that a `double` can store much more information than`float`.
+> whereas with `double`, the value is stored in memory as 64 bits. This means that a `double` can store much more information than a `float`.
 >
 > We can get away with using only `double` for now.
 
@@ -100,9 +100,9 @@ void setup() {
   size(200, 200);
 
   // background() here is being called with 3 parameters:
-  // red   - the integer value out of 255 for the red component.
-  // green - ^
-  // blue  - ^
+  //   red   - the integer value out of 255 for the red component.
+  //   green - ^
+  //   blue  - ^
   background(240, 248, 255);
 }
 
@@ -111,10 +111,10 @@ void draw() {
   // (10, 10) and (100, 50)
   //
   // Parameters:
-  // x1 - X value of first point.
-  // y1 - Y value of first point.
-  // x2 - X value of second point.
-  // y2 - Y value of second point.
+  //   x1 - X value of first point.
+  //   y1 - Y value of first point.
+  //   x2 - X value of second point.
+  //   y2 - Y value of second point.
   line(10, 10, 100, 50);
 }
 ```
@@ -185,8 +185,8 @@ int green = 0;
 int blue = 0;
 
 void draw() {
+    // NOTE: The condition must be wrapped in parentheses.
     // If the value of "red" is more than 255,
-    // The condition must be wrapped in parentheses.
     if (red > 255) {
         // Re-assign "red" to 0
         red = 0;
@@ -269,44 +269,121 @@ We can print to the console whatever we want, using functions such as the [`prin
 ```processing
 // To print things to the console, we can use:
 print("Stuff!");
-// However, this will not add a newline to the end,
-// so calling 'print("Stuff!");' again,
-// Will result in the console saying:
-// Stuff!Stuff!
-// So we can use 'println("Stuff!");' instead.
+```
+
+However, this will not add a newline to the end, so calling `print("Stuff!");` again will result in the console saying:
+
+```
+Stuff!Stuff!
+```
+
+So we can use `println("Stuff!");` instead:
+
+```processing
+println("Stuff!");
+println("More Stuff!");
+```
+
+Output:
+
+```
+Stuff!
+More Stuff!
 ```
 
 ## For loops
 
 ```processing
 // For loops consist of 4 components:
-for (int i = 0; i < 5; i++) { print(i) }
+for (int i = 0; i < 5; i++) {
+  print(i);
+}
 // 1. A variable is declared and assigned to 0,
 // 2. A condition is created, describing that the variable should be less than 5.
-// 3. The behaviour after each loop is declared, in this case, after running the code within the curly brackets once, the variable is incremented by 1.
+// 3. The behaviour after each loop is declared, in this case, after
+//    running the code within the curly brackets once, the variable
+//    is incremented by 1.
 //
 // This for loop essentially means:
-// While "i" is less than 5, keep running the code each loop, and increment "i" by 1 each loop.
-// Since "i" is assigned as 0, it means that the code will be ran 5 times.
+//   While "i" is less than 5, keep running the code each loop, and increment "i"
+//   by 1 each loop.
+//   Since "i" is assigned as 0, it means that the code will be ran 5 times.
+//   And "i" will be in the range of 0 - 4.
 ```
 
 ## Arrays
 
-An array is a collection of a container type, with a fixed size. The most simple form of it in Processing is `String`, which is essentially just a collection of singular characters, or the container type `char` in Processing.
+An array is a collection of a container type, with a fixed size.
+
+### Arrays in Processing
+
+The most simple form of it in Processing is `String`, which is essentially just a collection of singular characters, or the container type `char` in Processing.
 
 ```processing
 // Let's make a string.
 String myString = "hello";
 // This could be thought of as:
-char[] myString = { 'h', 'e', 'l', 'l', 'o' };
+char[] myString = new char[5];
+// As you can see, 'new char[5]' initiates a new array,
+// with a fixed size of 5.
+// A fixed size means that you can never increase or decrease the size
+// of the array.
+
+// To access an item in an array,
+// we use square brackets with the index
+// of the item.
+// NOTE: indexes start at 0.
+//       this means that the first item is accessed with
+//       an index of 0, and so on.
+myString[0] = 'h';
+myString[1] = 'e';
+myString[2] = 'l';
+myString[3] = 'l';
+myString[4] = 'o';
+// Or more simplified;
+char[] myEasierToWriteString = { 'h', 'e', 'l', 'l', 'o' };
+// This still means that the array has a fixed size of 5.
+
 // An array of characters :sunglasses:
-// A fixed size means that you can never increase or decrease the size, or length in this case, of the collection.
-// We cannot add or remove anything to the array of characters. It is "read-only", or immutable.
-// An array is also immutable, meaning that the value of it is fixed! It cannot be changed. Ever. EVER.
+// We cannot add/remove items to/from the array of characters.
+// This is because the size of an array is "read-only", or immutable.
+
+// But, this does not mean that individual items within the array cannot be changed.
+myEasierToWriteString[4] = 'a';
+// The array has already been allocated a size of 5, so changing the
+// value at index 4, or the 5th item, is not affecting the size.
 ```
 
+To get the allocated size of an array, we can use the `.length` attribute of an `array` value.
+
+```processing
+char[] myEasierToWriteString = { 'h', 'e', 'l', 'l', 'o' };
+// We can use iteration alongside the maximum size of the array.
+// Which means writing the condition to succeed when "i"
+// is less than the length of the array, which in this case,
+// is 5.
+// So "i" will be in the range of 0 - 4.
+for (int i = 0; i < myEasierToWriteString.length; i++) {
+  println("At Index", i, ":", myEasierToWriteString[i]);
+}
+```
+
+Output:
+
+```
+At Index 0 : h
+At Index 1 : e
+At Index 2 : l
+At Index 3 : l
+At Index 4 : o
+```
+
+To read up more about Processing arrays, feel free to check out [their documentation](https://processing.org/reference/Array.html).
+
+### Arrays in memory
+
 If you try to think of arrays from a memory's perspective, each item of the array has a fixed size.
-Say for example, each item in the array has a size of "8", and the array was stored in address 80 of the memory.
+Say for example, each item in the array has a size of 8, and the array was stored in address 80 of the memory.
 
 ```py
 >>> myNewArrayOfIntegers = [2, 3, 4]
