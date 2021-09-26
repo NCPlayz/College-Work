@@ -6,14 +6,21 @@ Here are some small things that might be good to note as they are referenced mul
 
 ### Container types
 
-The basic container types we've been taught are: `int`, `String`, `boolean`, `char`.
+The basic container types we've been taught are: `int`, `float`, `double`, `String`, `boolean`, `char`.
 
-| Type      | Description                                      | Example           |
-| --------- | ------------------------------------------------ | ----------------- |
-| `int`     | Represents an integer, or whole number.          | `123`             |
-| `String`  | Represents a string of characters.               | `"Hello, World!"` |
-| `boolean` | Represents a value that is either true or false. | `true`            |
-| `char`    | Represents a singular character.                 | `'H'`             |
+| Type      | Description                                                         | Example           |
+| --------- | ------------------------------------------------------------------- | ----------------- |
+| `int`     | Represents an integer, or whole number.                             | `123`             |
+| `float`   | Represents a number with decimals.                                  | `1.2345678`       |
+| `double`  | Represents a number with decimals with a higher degree of accuracy. | `1.2345678`       |
+| `String`  | Represents a string of characters.                                  | `"Hello, World!"` |
+| `boolean` | Represents a value that is either true or false.                    | `true`            |
+| `char`    | Represents a singular character.                                    | `'H'`             |
+
+> The difference between `float` and `double` is that with `float` the value is stored in memory as 32 bits,
+> whereas with `double the value is stored in memory as 64 bits. This means that a `double` can store much more information than`float`.
+>
+> We can get away with using only `double` for now.
 
 ### Comparison operators
 
