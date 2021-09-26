@@ -15,6 +15,21 @@ The basic container types we've been taught are: `int`, `String`, `boolean`, `ch
 | `boolean` | Represents a value that is either true or false. | `true`            |
 | `char`    | Represents a singular character.                 | `'H'`             |
 
+### Comparison operators
+
+In programming languages, it is possible to compare a value to another.
+
+| Operator | Description                                             | Example      |
+| -------- | ------------------------------------------------------- | ------------ |
+| `==`     | Check if a value is equivalent to another.              | `myInt == 1` |
+| `!=`     | Check if a value it not equivalent to another.          | `myInt != 1` |
+| `>`      | Check if a value is greater than the other.             | `myInt > 1`  |
+| `<`      | Check if a value is smaller than the other.             | `myInt < 1`  |
+| `>=`     | Check if a value is greater than or equal to the other. | `myInt >= 1` |
+| `<=`     | Check if a value is smaller than or equal to the other. | `myInt <= 1` |
+
+Usage of any of these operators will always return a `boolean` value, either `true` or `false`.
+
 ## Functions
 
 A function is just a container of code, that can be reused across your codebase.
@@ -115,6 +130,12 @@ myInt = 2;
 int myInt = 2;
 ```
 
+We can also store the value of expressions, such as [comparison operators](#comparison-operators).
+
+```processing
+bool isLargerThanTwo = myInt > 2;
+```
+
 ## Incrementing / Decrementing
 
 A variable that stores an integer have simple "operators", so you can easily
@@ -124,6 +145,7 @@ add or subtract from it.
 int myInt = 2;
 // Increment the value that the variable references by 1:
 myInt++; // Becomes 3
+
 // Decrement by 1:
 myInt--; // Becomes 2
 ```
@@ -138,6 +160,7 @@ int myInt = 2;
 myInt += 2; // Becomes 4
 // This can be thought of as:
 myInt = myInt + 2;
+
 // Compound assignment, that decrements "myInt" by 2
 myInt -= 2; // Becomes 2
 // This can be thought of as:
@@ -147,7 +170,7 @@ myInt = myInt - 2;
 ## Selection (If / Else Statements)
 
 `if` / `else` statements allows us to run different branches of code based on a condition.
-In an `if` statement, the condition must evaluate to be `true` for the code within its branch to run.
+In an `if` statement, the condition must evaluate to be `true` for the code within its branch to run. For the condition, we can use [comparison operators](#comparison-operators) combined with [boolean logic](#boolean-logic), which comes in later on.
 
 ```processing
 int red = 0;
@@ -156,6 +179,7 @@ int blue = 0;
 
 void draw() {
     // If the value of "red" is more than 255,
+    // The condition must be wrapped in parentheses.
     if (red > 255) {
         // Re-assign "red" to 0
         red = 0;
@@ -169,14 +193,10 @@ void draw() {
 }
 ```
 
+In the previous example, there was no `else` block, which meant the code after the `if` block is run afterwards, regardless of whether or not the condition passed. Using the `else` block, we can run other code if the condition doesn't pass.
+
 ```processing
 int myInt = 5;
-// Basic signature:
-// if (<condition>) { ... }
-// Must be wrapped in parentheses
-// The condition must always become a boolean, as If Statements
-// only work if the condition are / become the values "true" or "false".
-// See Boolean logic for more info
 if (myInt == 5) {
    // If myInt is 5
    // Do Stuff
@@ -190,33 +210,63 @@ else {
 
 ## Input / Output
 
+### Input
+
+The way we learnt to get text input was with:
+
 ```processing
-// The way we learnt to get text input was with
 import static javax.swing.JOptionPane.*;
 String input = showInputDialog("Enter something: ");
-// which opens a window. We can try to read
-// the value as container types other than String
-// by parsing them as such.
+```
 
+This utilises a Java "standard library" function to open a window with a text input box where the user can type in.
+
+> Processing allows you to access any functions or other components that are part of Java within Processing.
+> The official documentation for `showInputDialog()` is [here](<https://docs.oracle.com/javase/7/docs/api/javax/swing/JOptionPane.html#showInputDialog(java.lang.Object)>), but for all intents and purposes, we can think of the function signature of `showInputDialog()` as:
+>
+> ```processing
+> String showInputDialog(String prompt) {
+>   // Spooky code we don't really need to know about...
+> }
+> ```
+
+We can also try to read the value, or parse, as container types other than String by attempting to understand them as such.
+
+Example of understanding input as `int`:
+
+```processing
 int inputAsInt = parseInt(input, MIN_INT);
 
 // The second parameter here "MIN_INT" is used as a "fallback",
 // in case the input can't be read as an integer.
 // MIN_INT is just the smallest possible integer that Processing
 // or the Operating System can handle.
+```
 
+```processing
 // We also learnt about Processing's special "keyPressed" function,
 // which detects when a key is pressed.
 void keyPressed() {
-  // "key" is a special variable that only exists within the "keyPressed" function --
-  // Processing provides it to us!
+  // "key" is a special variable that only exists within the
+  // "keyPressed" function -- Processing provides it to us!
   if (key == 'q') {
     // Do Stuff!
   }
 }
+```
 
-// Do print things to the console, we can use:
+### Output
+
+We can print to the console whatever we want, using functions such as the [`print()` function](https://processing.org/reference/print_.html), or [`println()` function](https://processing.org/reference/println_.html).
+
+```processing
+// To print things to the console, we can use:
 print("Stuff!");
+// However, this will not add a newline to the end,
+// so calling 'print("Stuff!");' again,
+// Will result in the console saying:
+// Stuff!Stuff!
+// So we can use 'println("Stuff!");' instead.
 ```
 
 # For loops
@@ -230,7 +280,7 @@ for (int i = 0; i < 5; i++) { print(i) }
 //
 // This for loop essentially means:
 // While "i" is less than 5, keep running the code each loop, and increment "i" by 1 each loop.
-// Since "i" is assigned as 0, this means that the code will be ran 5 times.
+// Since "i" is assigned as 0, it means that the code will be ran 5 times.
 ```
 
 ## Arrays
@@ -270,7 +320,7 @@ For my array `myNewArrayOfIntegers`, the size of the array is 3, and because the
 We have no idea what the heck could be on address 105 onwards, because those addresses aren't allocated to us, or the array rather! It could be allocated to some other program, or a critical function like the operating system, or drawing onto the screen.
 If we were allowed to set whatever was at address 105, we could potentially accidentally break the whole computer!
 
-## Boolean Operators
+## Boolean Logic
 
 There are a few "Boolean operators", or logic gates. We know them as AND, OR, and NOT.
 In processing, they are `&&`, `||`, and `!`.
@@ -286,3 +336,30 @@ this logic gate requires two items and tells us if either one of the items are t
 ### NOT
 
 this logic gate requires one item, and basically inverts the value of that item. If the item is true, the result is false. If the item is false, the result is true.
+
+### Usage in Processing
+
+We can use boolean logic in if / else statements to combine conditions.
+
+```processing
+// Following from the Input/Output example,
+// If inputAsInt is ever MIN_INT, it is because their input
+// could not be read as an integer.
+// So, this checks if it is a valid integer AND if it is
+// greater than 0.
+if (inputAsInt != MIN_INT && inputAsInt > 0) {
+  print("Hello! I am", inputAsInt, "years old!");
+} else {
+  print("Please provide a valid positive integer.");
+}
+```
+
+The comparison operator `!=` could also be thought of as:
+
+```processing
+if (!(inputAsInt == 5)) {
+  // Do Stuff
+}
+```
+
+As Processing internally inverts the result of `x == y`.
