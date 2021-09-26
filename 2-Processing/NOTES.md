@@ -140,7 +140,7 @@ int myInt = 2;
 We can also store the value of expressions, such as [comparison operators](#comparison-operators).
 
 ```processing
-bool isLargerThanTwo = myInt > 2;
+boolean isLargerThanTwo = myInt > 2;
 ```
 
 ## Incrementing / Decrementing
