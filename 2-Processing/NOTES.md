@@ -2,30 +2,53 @@
 
 ## Functions
 
+A function is just a container of code, that can be reused across your codebase.
+
+The basic container types we've been taught are: `int`, `String`, `boolean`, `char`.
+
+> If you don't want the function to return anything, the container type should be `void`.
+
+### Declaring functions
+
 ```processing
 // The pattern is <container type> <function name>(<parameters>) { ... }
-// A function is just a container of code
-// If you don't want the function to return anything,
-// The container type should be "void"
-// The basic container types we've been taught are:
-// "int", "String", "boolean", "char"
 void myFunction() {
     // Do Stuff
 }
 
-// To call functions to run the code within it,
-// use the function name and provide parameters within the parentheses.
-myFunction();
+// Usually, a function that doesn't return a value is called a "procedure".
+// To create a function that returns a value, we just need to declare the
+// container type of what it returns correctly.
+
+int myCoolFunction() {
+    return 5;
+}
+```
+
+### Calling functions
+
+To call functions to run the code within it, use the function name and provide parameters within the parentheses.
+
+```processing
 // Since myFunction doesn't require any parameters,
 // there's nothing between the parentheses.
+myFunction();
+
+// We store the returned value in a variable.
+// See Variables section for more info.
+int coolVariable = myCoolFunction();
 ```
 
 ## Variables
+
+A variable is essentially a reference to a value.
+In Processing, a variable has a container type, which means the value **MUST** match that container type.
 
 ```processing
 // To declare a variable, simply write
 // <container type> <variable name>;
 int myInt;
+
 // To assign a value to a variable:
 // <variable name> = <value that matches the container type>;
 myInt = 2;
@@ -36,16 +59,57 @@ int myInt = 2;
 
 ## Incrementing / Decrementing
 
+A variable that stores an integer have simple "operators", so you can easily
+add or subtract from it.
+
 ```processing
 int myInt = 2;
-// To increment an integer by a value:
+// Increment the value that the variable references by 1:
+myInt++; // Becomes 3
+// Decrement by 1:
+myInt--; // Becomes 2
+```
+
+These are just short-hands for incrementing / decrementing the value by 1.
+To change the value by more than 1, we can use "compound assignments".
+That means you re-assign the value, and add the change at the same time.
+
+```processing
+int myInt = 2;
+// Compound assignment, that increments "myInt" by 2
 myInt += 2; // Becomes 4
-// There's also a short-hand for incrementing by 1:
-myInt++; // Becomes 5
-// It's the same for decrementing but with a minus :sunglasses:
+// This can be thought of as:
+myInt = myInt + 2;
+// Compound assignment, that decrements "myInt" by 2
+myInt -= 2; // Becomes 2
+// This can be thought of as:
+myInt = myInt - 2;
 ```
 
 ## Selection (If / Else Statements)
+
+`if` / `else` statements allows us to run different branches of code based on a condition.
+In an `if` statement, the condition must evaluate to be `true` for the code within its branch to run.
+
+```processing
+int red = 0;
+int green = 0;
+int blue = 0;
+
+void draw() {
+    // If the value of "red" is more than 255,
+    if (red > 255) {
+        // Re-assign "red" to 0
+        red = 0;
+    }
+
+    // Set the background to the values of the corresponding variables.
+    background(red, green, blue);
+
+    // Increment "red" by 1.
+    red++;
+}
+```
 
 ```processing
 int myInt = 5;
