@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 
 namespace CSharpWork
 {
@@ -11,6 +13,9 @@ namespace CSharpWork
             //Task2();
             //Task2Challenge();
             //Task3();
+            //Task4();
+            //Task5();
+            Task6();
         }
 
         static void Task1()
@@ -82,6 +87,69 @@ namespace CSharpWork
 
                 Console.WriteLine(var3.ToString() + " is now the biggest of the three: " + var1.ToString() + ", " + var2.ToString() + ", " + var3.ToString());
             }
+        }
+
+        static void Task4()
+        {
+            int x = IntPrompt(), y = IntPrompt(), z = IntPrompt();
+
+            if (x > y && x > z)
+            {
+                Console.WriteLine(x.ToString() + " is the largest.");
+            }
+            else if (y > x && y > z)
+            {
+                Console.WriteLine(y.ToString() + " is the largest.");
+            }
+            else if (z > x && z > y)
+            {
+                Console.WriteLine(z.ToString() + " is the largest.");
+            }
+        }
+
+        static void Task5()
+        {
+            int x = IntPrompt(), y = IntPrompt(), z = IntPrompt();
+
+            if (x > y)
+            {
+                if (x > z)
+                {
+                    Console.WriteLine(x.ToString() + " is the largest.");
+                }
+            }
+
+            if (y > z)
+            {
+                if (y > x)
+                {
+                    Console.WriteLine(y.ToString() + " is the largest.");
+                }
+            }
+
+            if (z > x)
+            {
+                if (z > y)
+                {
+                    Console.WriteLine(z.ToString() + " is the largest.");
+                }
+            }
+        }
+
+        static void Task6()
+        {
+            string x = "The barber cut my hair far too short!";
+            Console.WriteLine(x.IndexOf("u"));
+            Console.WriteLine(x.Replace("hair", "toenails"));
+
+            CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+            TextInfo textInfo = cultureInfo.TextInfo;
+            Console.WriteLine(textInfo.ToTitleCase(x));
+
+            string y = "The baby was born yesterday.";
+            Console.WriteLine(y.Contains("The baby"));
+            string z = "Mariah went to the Royal Opera House on Friday.";
+            Console.WriteLine(z.ToLower());
         }
 
         static double CalculateCost(int units)
