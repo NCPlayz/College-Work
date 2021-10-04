@@ -16,7 +16,9 @@ namespace CSharpWork
             //Task4();
             //Task5();
             //Task6();
-            Task7();
+            //Task7();
+            //Task10();
+            Task10Challenge();
         }
 
         static void Task1()
@@ -160,6 +162,31 @@ namespace CSharpWork
             Console.WriteLine("The area is: " + area.ToString());
         }
 
+        static void Task10()
+        {
+            int startValue = IntPrompt("Enter a start value: ");
+            double sum = 0;
+            for (int i = 1; i < 10; i += 2)
+            {
+                sum += Math.Pow(startValue, i);
+            }
+            Console.WriteLine("Sum = " + sum);
+        }
+
+        static void Task10Challenge()
+        {
+            int startValue = IntPrompt("Enter a start value: ");
+            int loopLimit = IntPrompt("Enter a loop value");
+            int exponent = 1;
+            double sum = 0;
+            for (int i = 0; i < loopLimit; i++)
+            {
+                sum += Math.Pow(startValue, exponent);
+                exponent += 2;
+            }
+            Console.WriteLine("Sum = " + sum);
+        }
+
         static double CalculateArea(int shapeType)
         {
             switch (shapeType)
@@ -237,6 +264,7 @@ namespace CSharpWork
             string input = Console.ReadLine();
             return int.Parse(input);
         }
+
         static double DoublePrompt(string prompt = "Enter an integer: ")
         {
             Console.WriteLine(prompt);
