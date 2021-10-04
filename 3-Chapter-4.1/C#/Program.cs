@@ -15,7 +15,8 @@ namespace CSharpWork
             //Task3();
             //Task4();
             //Task5();
-            Task6();
+            //Task6();
+            Task7();
         }
 
         static void Task1()
@@ -152,6 +153,37 @@ namespace CSharpWork
             Console.WriteLine(z.ToLower());
         }
 
+        static void Task7()
+        {
+            int shapeType = IntPrompt("Enter the shape type: ");
+            double area = CalculateArea(shapeType);
+            Console.WriteLine("The area is: " + area.ToString());
+        }
+
+        static double CalculateArea(int shapeType)
+        {
+            switch (shapeType)
+            {
+                case 1:
+                    double squareLength = DoublePrompt("Enter the length of the square: ");
+                    return squareLength * squareLength;
+                case 2:
+                    double rectLength = DoublePrompt("Enter the length of the rectangle: ");
+                    double rectWidth = DoublePrompt("Enter the width of the rectangle: ");
+                    return rectLength * rectWidth;
+                case 3:
+                    double triLength = DoublePrompt("Enter the length of the triangle: ");
+                    double triHeight = DoublePrompt("Enter the height of the triangle: ");
+                    return triLength * triHeight / 2;
+                case 4:
+                    double radius = DoublePrompt("Enter the radius of the circle: ");
+                    return Math.PI * Math.Pow(radius, 2);
+                default:
+                    Console.WriteLine("Invalid Shape Type!");
+                    throw new Exception();
+            }
+        }
+
         static double CalculateCost(int units)
         {
             double cost = 0;
@@ -204,6 +236,12 @@ namespace CSharpWork
             Console.WriteLine(prompt);
             string input = Console.ReadLine();
             return int.Parse(input);
+        }
+        static double DoublePrompt(string prompt = "Enter an integer: ")
+        {
+            Console.WriteLine(prompt);
+            string input = Console.ReadLine();
+            return double.Parse(input);
         }
     }
 }
