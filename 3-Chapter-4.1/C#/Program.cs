@@ -18,7 +18,9 @@ namespace CSharpWork
             //Task6();
             //Task7();
             //Task10();
-            Task10Challenge();
+            //Task10Challenge();
+            //Task11();
+            Task12();
         }
 
         static void Task1()
@@ -187,6 +189,33 @@ namespace CSharpWork
             Console.WriteLine("Sum = " + sum);
         }
 
+        static void Task11()
+        {
+            Console.WriteLine("Enter an integer: ");
+            string input1 = Console.ReadLine();
+            string input2 = Console.ReadLine();
+            string input3 = Console.ReadLine();
+            string input4 = Console.ReadLine();
+            string input5 = Console.ReadLine();
+
+            string sum = LengthSum(input1, input2, input3, input4, input5);
+            Console.WriteLine(sum);
+        }
+
+        static void Task12()
+        {
+            string name = StringPrompt();
+            string longString = Repeat(name, 10);
+            Console.WriteLine(longString);
+        }
+
+        static void Task13()
+        {
+            string text = StringPrompt();
+            string IsPalindrome = IsPalindrome(text) ? "is" : "is not";
+            Console.WriteLine(text + " " + IsPalindrome + " a palindrome.");
+        }
+
         static double CalculateArea(int shapeType)
         {
             switch (shapeType)
@@ -258,6 +287,12 @@ namespace CSharpWork
             return year % 4 == 0;
         }
 
+        static bool IsPalindrome(string text)
+        {
+            // check if text is a palindrome
+            return text.Equals(new string(text.Reverse().ToArray()));
+        }
+
         static int IntPrompt(string prompt = "Enter an integer: ")
         {
             Console.WriteLine(prompt);
@@ -271,5 +306,55 @@ namespace CSharpWork
             string input = Console.ReadLine();
             return double.Parse(input);
         }
+
+        static string StringPrompt(string prompt = "Enter your name: ")
+        {
+            Console.WriteLine(prompt);
+            return Console.ReadLine();
+        }
+
+        static string LengthSum(string input1, string input2, string input3, string input4, string input5)
+        {
+            int size1 = LengthCalculate(input1);
+            int size2 = LengthCalculate(input2);
+            int size3 = LengthCalculate(input3);
+            int size4 = LengthCalculate(input4);
+            int size5 = LengthCalculate(input5);
+
+            int[] sizes = { size1, size2, size3, size4, size5 };
+            int sum = 0;
+
+            foreach (int size in sizes)
+            {
+                if (size > 100)
+                {
+                    sum += size;
+                }
+            }
+
+            return sum.ToString();
+        }
+
+        static int LengthCalculate(string input)
+        {
+            int size = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                size += input.Length;
+            }
+
+            return size;
+        }
+
+        static string Repeat(string text, int times)
+        {
+            string result = "";
+            for (int i = 0; i < times; i++)
+            {
+                result += text;
+            }
+            return result;
+        }
+
     }
 }
