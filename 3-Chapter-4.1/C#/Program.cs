@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 
 namespace CSharpWork
@@ -20,7 +22,9 @@ namespace CSharpWork
             //Task10();
             //Task10Challenge();
             //Task11();
-            Task12();
+            //Task12();
+            //Task13();
+            Task14();
         }
 
         static void Task1()
@@ -212,9 +216,18 @@ namespace CSharpWork
         static void Task13()
         {
             string text = StringPrompt();
-            string IsPalindrome = IsPalindrome(text) ? "is" : "is not";
-            Console.WriteLine(text + " " + IsPalindrome + " a palindrome.");
+            string isPalindrome = IsPalindrome(text) ? "is" : "is not";
+            Console.WriteLine(text + " " + isPalindrome + " a palindrome.");
         }
+
+        static void Task14()
+        {
+            int var1 = IntPrompt();
+            int var2 = IntPrompt();
+            Console.WriteLine(CheckPerfect(var1));
+            Console.WriteLine(CheckPerfect(var2));
+        }
+
 
         static double CalculateArea(int shapeType)
         {
@@ -356,5 +369,28 @@ namespace CSharpWork
             return result;
         }
 
+        static List<int> GetDivisors(int number)
+        {
+            List<int> divisors = new List<int>();
+
+            for (int i = 1; i < number; i++)
+            {
+                if (number % i == 0)
+                {
+                    divisors.Add(i);
+                }
+            }
+
+            return divisors;
+        }
+
+        static bool CheckPerfect(int number)
+        {
+            List<int> divisors = GetDivisors(number);
+
+            int sum = divisors.Sum();
+
+            return sum == number;
+        }
     }
 }
