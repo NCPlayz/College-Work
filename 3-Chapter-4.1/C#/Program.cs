@@ -24,7 +24,10 @@ namespace CSharpWork
             //Task11();
             //Task12();
             //Task13();
-            Task14();
+            //Task14();
+            //Task15();
+            //Task16();
+            //Task16Improved();
         }
 
         static void Task1()
@@ -228,6 +231,72 @@ namespace CSharpWork
             Console.WriteLine(CheckPerfect(var2));
         }
 
+        static void Task15()
+        {
+            int var1 = IntPrompt();
+            Console.WriteLine(GetStepsForCollatzConjecture(var1));
+        }
+
+        static void Task16()
+        {
+            string var1 = GetInput();
+            string var2 = GetInput();
+            string var3 = GetInput();
+            string var4 = GetInput();
+            string var5 = GetInput();
+            string var6 = GetInput();
+            string var7 = GetInput();
+            string var8 = GetInput();
+            string var9 = GetInput();
+            string var10 = GetInput();
+
+            int var1Length = GetLength(var1);
+            int var2Length = GetLength(var2);
+            int var3Length = GetLength(var3);
+            int var4Length = GetLength(var4);
+            int var5Length = GetLength(var5);
+            int var6Length = GetLength(var6);
+            int var7Length = GetLength(var7);
+            int var8Length = GetLength(var8);
+            int var9Length = GetLength(var9);
+            int var10Length = GetLength(var10);
+
+            double var1LengthCalculation = CalculateBasedOnLength(var1Length);
+            double var2LengthCalculation = CalculateBasedOnLength(var2Length);
+            double var3LengthCalculation = CalculateBasedOnLength(var3Length);
+            double var4LengthCalculation = CalculateBasedOnLength(var4Length);
+            double var5LengthCalculation = CalculateBasedOnLength(var5Length);
+            double var6LengthCalculation = CalculateBasedOnLength(var6Length);
+            double var7LengthCalculation = CalculateBasedOnLength(var7Length);
+            double var8LengthCalculation = CalculateBasedOnLength(var8Length);
+            double var9LengthCalculation = CalculateBasedOnLength(var9Length);
+            double var10LengthCalculation = CalculateBasedOnLength(var10Length);
+
+            double average = GetAverageOf10Integers(var1LengthCalculation, var2LengthCalculation, var3LengthCalculation, var4LengthCalculation, var5LengthCalculation, var6LengthCalculation, var7LengthCalculation, var8LengthCalculation, var9LengthCalculation, var10LengthCalculation);
+
+            Console.WriteLine("The average of the length is: " + average.ToString());
+        }
+
+        static void Task16Improved()
+        {
+            string[] vars = new string[10];
+
+            for (int i = 0; i < vars.Length; i++)
+            {
+                vars[i] = GetInput();
+            }
+
+            double[] varsAsDouble = new double[10];
+
+            for (int i = 0; i < vars.Length; i++)
+            {
+                varsAsDouble[i] = CalculateBasedOnLength(GetLength(vars[i]));
+            }
+
+            double average = GetAverageOfArray(varsAsDouble);
+
+            Console.WriteLine("The average of the length is: " + average.ToString());
+        }
 
         static double CalculateArea(int shapeType)
         {
@@ -391,6 +460,91 @@ namespace CSharpWork
             int sum = divisors.Sum();
 
             return sum == number;
+        }
+
+        static int GetStepsForCollatzConjecture(decimal number)
+        {
+            int steps = 0;
+            while (number != 1)
+            {
+                number = CalculateCollatzConjecture(number);
+                steps++;
+            }
+            return steps;
+        }
+
+        static decimal CalculateCollatzConjecture(decimal number)
+        {
+            if (number % 2 == 0)
+            {
+                return number / 2;
+            }
+            else
+            {
+                return number * 3 + 1;
+            }
+        }
+
+        static bool ValidatePassword(string password)
+        {
+            if (password.Length < 6 || password.Length > 24)
+            {
+                return false;
+            }
+
+            if (password.Where(char.IsUpper).ToArray().Length < 1)
+            {
+                return false;
+            }
+
+            if (password.Where(char.IsLower).ToArray().Length < 1)
+            {
+                return false;
+            }
+
+            if (password.Where(char.IsNumber).ToArray().Length < 1)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        static string GetInput()
+        {
+            Console.WriteLine("Enter some text:");
+            return Console.ReadLine();
+        }
+
+        static int GetLength(string s)
+        {
+            return s.Length;
+        }
+
+        static double CalculateBasedOnLength(int len)
+        {
+            if (len % 2 == 0 && len > 78)
+            {
+                return Math.Pow(len, 3);
+            }
+            else if (len % 2 != 0 && len < 56)
+            {
+                return Math.Pow(len, 2);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        static double GetAverageOf10Integers(double var1, double var2, double var3, double var4, double var5, double var6, double var7, double var8, double var9, double var10)
+        {
+            return (var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9 + var10) / 10;
+        }
+
+        static double GetAverageOfArray(double[] arr)
+        {
+            return arr.Sum() / arr.Length;
         }
     }
 }
