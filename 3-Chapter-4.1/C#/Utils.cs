@@ -372,19 +372,66 @@ namespace CSharpWork
             return mergedArr;
         }
 
-        //public static int DuplicateCount(string s)
-        //{
-        //    char[] distinctChars = s.Distinct().ToArray();
-        //    int[,] duplicateCounts = new int[distinctChars.Length,2];
+        public static bool IsFirstOrderIsogram(string s)
+        {
+            char[] distinctChars = s.Distinct().ToArray();
+            return distinctChars.Length == s.Length;
+        }
 
-        //    for (int i = 0; i < distinctChars.Length; i++)
-        //    {
-        //        char distinctChar = distinctChars[i];
-        //        duplicateCounts[i, 0] = distinctChar;
-        //        duplicateCounts[i, 1] = s.Count(c => c == distinctChar);
-        //    }
+        public static int[,] IntPrompt2d(int rows, int cols)
+        {
+            int[,] nums = new int[rows, cols];
 
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    nums[i, j] = Utils.IntPrompt();
+                }
+            }
 
-        //}
+            return nums;
+        }
+
+        public static int[,] PrintGrid(int rows, int cols)
+        {
+            int[,] array = new int[rows, cols];
+
+            int num = 0;
+            for (int j = 0; j < cols; j++)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    array[i, j] = num;
+                    num++;
+                }
+            }
+
+            return array;
+        }
+
+        public static bool IsMagic(int[][] array)
+        {
+            int[] horizontalSums = new int[array.Length];
+            int[] verticalSums = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                horizontalSums[i] = array[i].Sum();
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array[i].Length; j++)
+                {
+                    verticalSums[j] += array[i][j];
+                }
+            }
+
+            if (horizontalSums != verticalSums)
+            {
+                return false;
+            }
+        }
     }
 }

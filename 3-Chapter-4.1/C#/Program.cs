@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -34,8 +35,14 @@ namespace CSharpWork
             //Task20Challenge();
             //Task21();
             //Task22();
-            Task23();
-            Task24();
+            //Task23();
+            //Task24();
+            //Task25();
+            //Task26();
+            //Task27();
+            //Task28()
+            //Task29();
+            Task32();
         }
 
         static void Task1()
@@ -461,6 +468,187 @@ namespace CSharpWork
             string isEven = sum % 2 == 0 ? "even" : "odd";
 
             Console.WriteLine("The total of the lengths of the phrases inputted is " + isEven + ".");
+        }
+
+        static void Task25()
+        {
+            string[] arr1 = { "Malie", "George", "Leila" };
+            int[] arr2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                Console.WriteLine(arr1[i]);
+
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    Console.Write(arr2[j] + i);
+
+                    if (j != arr2.Length - 1)
+                    {
+                        Console.Write(' ');
+                    }
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static void Task26()
+        {
+            for (int i = 1; i < 10; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write(i);
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static void Task27()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Console.Write("* ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static void Task28()
+        {
+            for (int i = 1; i < 10; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write("* ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static void Task29()
+        {
+            for (int i = 9; i > 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write("* ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        static void Task30()
+        {
+            float[,] arr = new float[3, 5];
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.WriteLine($"Row: {i + 1}, Column: {j + 1}");
+                    Console.WriteLine(arr[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void Task31()
+        {
+            string text = Console.ReadLine();
+            List<char> usedChars = new List<char>();
+
+            foreach (char t in text) {
+                if (usedChars.Contains(t))
+                {
+                    continue;
+                }
+                usedChars.Add(t);
+            }
+
+            if (usedChars.Count == text.Length)
+            {
+                Console.WriteLine(text + " is a first-order isogram");
+            }
+        }
+
+        static void Task31Improved()
+        {
+            string text = Console.ReadLine();
+
+            if (Utils.IsFirstOrderIsogram(text))
+            {
+                Console.WriteLine(text + " is a first-order isogram");
+            }
+        }
+
+        static void Task32()
+        {
+            int num = Utils.IntPrompt();
+
+            double size = Math.Ceiling(Math.Log2(num));
+
+            int[] converted = new int[(int)size];
+            int curr = num;
+
+            for (int i = 0; i < size; i++)
+            {
+                converted[i] = curr % 2;
+                curr = num / 2;
+            }
+
+            Console.WriteLine(string.Join("", converted.Select(i => i.ToString()).ToArray()));
+        }
+
+        static void Task33()
+        {
+            int rows = 6;
+            int cols = 6;
+            int[,] nums = Utils.IntPrompt2d(rows, cols);
+
+            int[] sums = new int[cols];
+
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    sums[i] += nums[j, i];
+                }
+            }
+
+            Console.WriteLine($"First Column: {sums[0]}");
+            Console.WriteLine($"Last Column: {sums[^1]}");
+            Console.WriteLine($"Total: {sums.Sum()}");
+        }
+
+        static void Task34()
+        {
+            int size = 6;
+            int[,] nums = Utils.IntPrompt2d(size, size);
+
+            int[] sums = new int[2];
+
+            for (int i = 0; i < size; i++)
+            {
+                sums[0] += nums[i, i];
+                sums[1] += nums[i, size-i];
+            }
+
+            Console.WriteLine($"Top left to Bottom right: {sums[0]}");
+            Console.WriteLine($"Top right to Bottom left: {sums[1]}");
+            Console.WriteLine($"Total: {sums.Sum()}");
+        }
+
+        static void Task35()
+        {
+            List<> a = new();
         }
     }
 }
