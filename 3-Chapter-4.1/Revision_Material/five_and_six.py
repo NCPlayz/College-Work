@@ -1,0 +1,5 @@
+one = input()
+two = input()
+three = input()
+smallest = min(one, two, three, key=len)
+print(smallest)
